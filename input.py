@@ -1,14 +1,14 @@
-import pygame._sdl2
+import pygame
 
 from events import Events
 
 
 class Gamepad:
-    A_BUTTON = 0
-    B_BUTTON = 1
-    X_BUTTON = 2
+    A_BUTTON = 1
+    B_BUTTON = 2
+    X_BUTTON = 0
     Y_BUTTON = 3
-    START_BUTTON = 6
+    START_BUTTON = 9
 
     def __init__(self, gamepad_id: int = 0):
         self.joystick = pygame.joystick.Joystick(gamepad_id)
@@ -27,6 +27,7 @@ class Gamepad:
             else: scene.on_d_zero()
 
         if event.type == pygame.JOYBUTTONDOWN:
+            print(event.button)
             if event.button == self.A_BUTTON: scene.on_a_down()
             elif event.button == self.B_BUTTON: scene.on_b_down()
             elif event.button == self.X_BUTTON: scene.on_x_down()

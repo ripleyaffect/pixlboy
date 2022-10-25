@@ -5,6 +5,7 @@ import sys
 
 import events
 from displays.display import Display
+from events import Events
 from input import Gamepad
 from scenes import ConwayScene, ImageScene, BarVizScene
 from scenes.menu_scene import MenuScene
@@ -20,7 +21,9 @@ class PixlBoy:
             self.gamepad = Gamepad()
 
         self.menu_scene = MenuScene(self.display)
-        self.scene = ImageScene(self.display, image_name='test')
+        #self.scene = ConwayScene(self.display)
+        self.scene = self.menu_scene
+        #self.scene = ImageScene(self.display, image_name='test')
 
     def run(self):
         while True:
@@ -36,6 +39,9 @@ class PixlBoy:
         self.scene = scene
 
     def process_events(self):
+        if Events.go_to_menu_requested:
+            self.go_to_menu()
+            Events.clear()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()

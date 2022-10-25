@@ -2,6 +2,7 @@ from colors import Colors
 
 from .bar_viz_scene import BarVizScene
 from .conway_scene import ConwayScene
+from .image_scene import ImageScene
 from .snake_scene import SnakeScene
 from .scene import Scene
 
@@ -11,7 +12,7 @@ class MenuScene(Scene):
         SnakeScene,
         BarVizScene,
         ConwayScene,
-        ConwayScene,
+        ImageScene,
     ]
 
     active_scene_index = 0
@@ -36,6 +37,7 @@ class MenuScene(Scene):
         self.update_display()
 
     def update_display(self):
+        #return
         self.display.set_pixels(self.to_pixels())
 
     def to_pixels(self):
