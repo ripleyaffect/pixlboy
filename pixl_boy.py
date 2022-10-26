@@ -1,29 +1,22 @@
-import random
-
 import pygame
 import sys
 
 import events
 from displays.display import Display
 from events import Events
-from input import Gamepad
-from scenes import ConwayScene, ImageScene, BarVizScene
+from inputs import Gamepad, Keyboard
 from scenes.menu_scene import MenuScene
 
 
 class PixlBoy:
-    def __init__(self, display: Display, use_gamepad: bool = False):
+    def __init__(self, display: Display, input):
         # Set up externals
         self.display = display
-        self.use_gamepad = use_gamepad
+        self.input = input
 
-        if self.use_gamepad:
-            self.gamepad = Gamepad()
-
+        # Initialize the scene
         self.menu_scene = MenuScene(self.display)
-        #self.scene = ConwayScene(self.display)
         self.scene = self.menu_scene
-        #self.scene = ImageScene(self.display, image_name='test')
 
     def run(self):
         while True:
@@ -47,5 +40,5 @@ class PixlBoy:
                 sys.exit()
             elif event.type == events.GO_TO_MENU:
                 self.go_to_menu()
-            elif self.use_gamepad:
-                self.gamepad.process_event(event, self.scene)
+            else:
+                self.input.process_event(event, self.scene)

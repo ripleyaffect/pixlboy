@@ -10,9 +10,6 @@ class BarVizScene(Scene):
             self,
             display,
             seconds_between_renders: float = 0.1,
-            bg_color: Color = Colors.black,
-            bar_color: Color = Colors.blue,
-
     ):
         super(BarVizScene, self).__init__(display, seconds_between_renders)
 
@@ -22,8 +19,8 @@ class BarVizScene(Scene):
         self.bar_heights = [0 for _ in range(self.bar_count)]
         self.bar_height_targets = [random.randint(0, self.max_height) for _ in range(self.bar_count)]
 
-        self.bg_color = bg_color
-        self.bar_color = bar_color
+        self.palette = Colors.get_random_palette()
+        self.palette_count = len(self.palette)
 
     def update(self):
         # Step heights towards targets
@@ -42,6 +39,9 @@ class BarVizScene(Scene):
 
     def to_pixels(self) -> Pixels:
         return [
-            [self.bar_color if i < height else self.bg_color for i in range(self.bar_count)]
-            for height in self.bar_heights
+            [
+                self.palette[i % self.palette_count] if y <= self.bar_heights[i] else Colors.black
+                for i in range(self.bar_count)
+            ]
+            for y in range(len(self.bar_heights))
         ]
