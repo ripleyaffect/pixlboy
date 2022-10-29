@@ -6,7 +6,8 @@ from pixl_boy import PixlBoy
 from utils import ImageUtils
 
 if __name__ == '__main__':
-    use_emulator = True
+    use_emulator = Falsegs
+    
     use_gamepad = not use_emulator
 
     if use_emulator:
