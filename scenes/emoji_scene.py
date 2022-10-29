@@ -1,20 +1,24 @@
 from .animation_scene import AnimationScene
 
 
-def get_frames(base, start, finish):
+def get_frames(base, count):
     return [
-        f'{base}{i}' for i in range(start, finish + 1)
+        f'{base}/frame{i}' for i in range(1, count + 1)
     ]
 
 
-SMILE_FRAMES = get_frames('smiley/frame', 1, 20)
-HEART_FRAMES = get_frames('heart/frame', 1, 10)
+SMILE_FRAMES = get_frames('smiley', 20)
+PUMPKIN_FRAMES = get_frames('pumpkin', 11)
+HEART_FRAMES = get_frames('heart', 10)
+BEER_FRAMES = get_frames('beer', 34)
 
 
 class EmojiScene(AnimationScene):
     emoji = [
         SMILE_FRAMES,
+        PUMPKIN_FRAMES,
         HEART_FRAMES,
+        BEER_FRAMES,
     ]
 
     def __init__(self, display, initial_emoji_index: int = 0):
@@ -28,7 +32,7 @@ class EmojiScene(AnimationScene):
         self.current_emoji_index = initial_emoji_index
 
     def on_d_right(self):
-        self.update_current_emoji_index_by(-1)
+        self.update_current_emoji_index_by(1)
 
     def on_d_left(self):
         self.update_current_emoji_index_by(-1)
