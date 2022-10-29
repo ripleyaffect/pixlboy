@@ -25,7 +25,7 @@ class SnakeScene(Scene):
     LEFT_DIRECTION = (-1, 0)
     RIGHT_DIRECTION = (1, 0)
 
-    def __init__(self, display, seconds_between_renders: float = 0.15):
+    def __init__(self, display, seconds_between_renders: float = 0.12):
         super(SnakeScene, self).__init__(display, seconds_between_renders)
 
         # Place the head at the center of the screen
@@ -35,29 +35,30 @@ class SnakeScene(Scene):
         self.snake = Snake([head, t_1, t_2])
 
         self.direction = self.RIGHT_DIRECTION
+        self.next_direction = self.RIGHT_DIRECTION
 
         self.apple = (1, 1)
         self.place_apple()
 
     def on_d_up(self):
         if self.direction != self.DOWN_DIRECTION:
-            self.direction = self.UP_DIRECTION
+            self.next_direction = self.UP_DIRECTION
 
     def on_d_down(self):
         if self.direction != self.UP_DIRECTION:
-            self.direction = self.DOWN_DIRECTION
+            self.next_direction = self.DOWN_DIRECTION
 
     def on_d_left(self):
         if self.direction != self.RIGHT_DIRECTION:
-            self.direction = self.LEFT_DIRECTION
+            self.next_direction = self.LEFT_DIRECTION
 
     def on_d_right(self):
         if self.direction != self.LEFT_DIRECTION:
-            self.direction = self.RIGHT_DIRECTION
+            self.next_direction = self.RIGHT_DIRECTION
 
     def update(self):
-        # Move the head in the current direction
-
+        # Update and move in the next direction
+        self.direction = self.next_direction
         next_head = (
             self.snake.nodes[0][0] + self.direction[0],
             self.snake.nodes[0][1] + self.direction[1]

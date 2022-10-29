@@ -16,7 +16,7 @@ class PixelDisplay(Display):
         self.leds = neopixel.NeoPixel(
             board.D18,
             width * height,
-            brightness=0.02,
+            brightness=0.01,
             pixel_order=neopixel.GRB,
             auto_write=False,
         )

@@ -1,12 +1,18 @@
 import pygame
 
 from game_types import Pixels
-
+g
 
 class ImageUtils:
+    base_path = '/home/ripley/Projects/pixlboy/images/'
+
+    @classmethod
+    def set_base_path(cls, new_base_path):
+        cls.base_path = new_base_path
+
     @classmethod
     def get_pixels(cls, image_name):
-        img = pygame.image.load(f'images/{image_name}.png')
+        img = pygame.image.load(f'{cls.base_path}{image_name}.png')
         return cls.to_pixels(img)
 
     @classmethod

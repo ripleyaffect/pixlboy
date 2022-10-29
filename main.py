@@ -3,10 +3,14 @@ import pygame
 from displays import EmulatorDisplay, PixelDisplay
 from inputs import Keyboard, Gamepad
 from pixl_boy import PixlBoy
+from utils import ImageUtils
 
 if __name__ == '__main__':
     use_emulator = True
     use_gamepad = not use_emulator
+
+    if use_emulator:
+        ImageUtils.set_base_path('images/')
 
     pygame.init()
 

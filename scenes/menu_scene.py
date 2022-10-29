@@ -3,7 +3,7 @@ from utils import ImageUtils
 
 from .bar_viz_scene import BarVizScene
 from .conway_scene import ConwayScene
-from .explosion_scene import ExplosionScene
+from .emoji_scene import EmojiScene
 from .snake_scene import SnakeScene
 from .scene import Scene
 
@@ -12,7 +12,7 @@ class MenuScene(Scene):
     scenes = [
         SnakeScene,
         BarVizScene,
-        ExplosionScene,
+        EmojiScene,
         ConwayScene,
     ]
     scene_image_names = [

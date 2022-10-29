@@ -17,7 +17,7 @@ class AnimationScene(Scene):
         if frame_image_names is None:
             frame_image_names = ['test']
 
-        self.current_index = 0
+        self.current_frame_index = 0
         self.frame_image_names = frame_image_names
         self.frame_count = len(frame_image_names)
 
@@ -25,16 +25,21 @@ class AnimationScene(Scene):
 
         self.set_current_frame()
 
+    def set_frame_image_names(self, new_frame_image_names: list[str]):
+        self.current_frame_index = 0
+        self.frame_image_names = new_frame_image_names
+        self.frame_count = len(new_frame_image_names)
+
     def update(self):
-        self.current_index += 1
-        if self.current_index == self.frame_count:
+        self.current_frame_index += 1
+        if self.current_frame_index == self.frame_count:
             # We always return to menu after a non-looping animation
             if not self.loop:
                 Events.go_to_menu()
                 return
             # Loop back to start
-            self.current_index = 0
+            self.current_frame_index = 0
         self.set_current_frame()
 
     def set_current_frame(self):
-        self.display.set_pixels(ImageUtils.get_pixels(self.frame_image_names[self.current_index]))
+        self.display.set_pixels(ImageUtils.get_pixels(self.frame_image_names[self.current_frame_index]))

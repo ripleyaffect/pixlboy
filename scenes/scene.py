@@ -33,6 +33,9 @@ class Scene:
     def on_y_down(self): pass
     def on_y_up(self): pass
 
+    def force_render(self):
+        self.next_render = time.time()
+
     def render(self):
         current_time = time.time()
         if self.next_render > current_time:

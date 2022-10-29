@@ -9,7 +9,7 @@ class Colors:
 
     black: Color = (MIN, MIN, MIN)
     gray: Color = (MAX // 2, MAX // 2, MAX // 2)
-    white: Color = (MAX, MAX, MAX)
+    white: Color =  gray
 
     red: Color = (MAX, 0, 0)
     orange: Color = (MAX, MAX // 2, 0)

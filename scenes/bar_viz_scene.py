@@ -1,7 +1,7 @@
 import random
 
 from colors import Colors
-from game_types import Pixels, Color
+from game_types import Pixels
 from .scene import Scene
 
 

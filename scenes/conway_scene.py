@@ -19,7 +19,7 @@ class ConwayScene(Scene):
             display,
             seconds_between_renders: float = 0.5,
             off_color: Color = Colors.black,
-            on_color: Color = Colors.white,
+            on_color: Color = Colors.violet,
             randomize: bool = True,
         ):
         super(ConwayScene, self).__init__(display, seconds_between_renders)

@@ -27,7 +27,6 @@ class Gamepad:
             else: scene.on_d_zero()
 
         if event.type == pygame.JOYBUTTONDOWN:
-            print(event.button)
             if event.button == self.A_BUTTON: scene.on_a_down()
             elif event.button == self.B_BUTTON: scene.on_b_down()
             elif event.button == self.X_BUTTON: scene.on_x_down()
