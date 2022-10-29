@@ -1,7 +1,7 @@
 import pygame
 
 from game_types import Pixels
-g
+
 
 class ImageUtils:
     base_path = '/home/ripley/Projects/pixlboy/images/'
