@@ -7,24 +7,24 @@ def get_frames(base, count):
     ]
 
 
+BACHELOR_FRAMES = get_frames('bachelor', 60)
 SMILE_FRAMES = get_frames('smiley', 20)
-PUMPKIN_FRAMES = get_frames('pumpkin', 11)
 HEART_FRAMES = get_frames('heart', 10)
 BEER_FRAMES = get_frames('beer', 34)
 
 
 class EmojiScene(AnimationScene):
     emoji = [
-        SMILE_FRAMES,
-        PUMPKIN_FRAMES,
+        BACHELOR_FRAMES,
         HEART_FRAMES,
+        SMILE_FRAMES,
         BEER_FRAMES,
     ]
 
     def __init__(self, display, initial_emoji_index: int = 0):
         super(EmojiScene, self).__init__(
             display,
-            seconds_between_renders=0.3,
+            seconds_between_renders=0.2,
             frame_image_names=self.emoji[initial_emoji_index],
             loop=True,
         )

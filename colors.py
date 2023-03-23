@@ -29,8 +29,8 @@ class Colors:
         violet,
     ]
 
-    palette_0 = rainbow
-    palette_1 = [
+    rainbow_palette = rainbow
+    usa_palette = [
         blue,
         blue,
         blue,
@@ -48,23 +48,23 @@ class Colors:
         white,
         red,
     ]
-    palette_2 = [
+    purple_palette = [
         (98, 71, 170),
         (221, 221, 223),
         (208, 196, 223),
         (220, 171, 223),
         (199, 146, 223),
     ]
-    palette_3 = [
+    rgb_palette = [
         red,
         green,
         blue,
     ]
-    palette_4 = [
+    halloween_palette = [
         violet,
         orange,
     ]
-    palette_5 = [
+    ukraine_palette = [
         blue,
         blue,
         blue,
@@ -81,17 +81,41 @@ class Colors:
         yellow,
         yellow,
         yellow,
+    ]
+    uva_palette = [
+        blue,
+        orange
+    ]
+    venezuala_palette = [
+        yellow,
+        yellow,
+        yellow,
+        yellow,
+        yellow,
+        blue,
+        blue,
+        blue,
+        blue,
+        blue,
+        blue,
+        red,
+        red,
+        red,
+        red,
+        red,
     ]
 
     palettes = [
-        palette_0,
-        palette_1,
-        palette_2,
-        palette_3,
-        palette_4,
-        palette_5,
+        usa_palette,
+        venezuala_palette,
+        uva_palette,
+        rgb_palette,
+        rainbow_palette,
     ]
+
 
     @classmethod
     def get_random_palette(cls):
         return cls.palettes[random.randint(0, len(cls.palettes) - 1)]
+
+

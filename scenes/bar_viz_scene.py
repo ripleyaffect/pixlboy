@@ -6,10 +6,13 @@ from .scene import Scene
 
 
 class BarVizScene(Scene):
+    palettes = Colors.palettes
+
     def __init__(
             self,
             display,
             seconds_between_renders: float = 0.1,
+            initial_palette_index: int = 0
     ):
         super(BarVizScene, self).__init__(display, seconds_between_renders)
 
@@ -19,8 +22,9 @@ class BarVizScene(Scene):
         self.bar_heights = [0 for _ in range(self.bar_count)]
         self.bar_height_targets = [random.randint(0, self.max_height) for _ in range(self.bar_count)]
 
-        self.palette = Colors.get_random_palette()
-        self.palette_count = len(self.palette)
+        self.current_palette_index = initial_palette_index
+
+        self.set_palette()
 
     def update(self):
         # Step heights towards targets
@@ -45,3 +49,18 @@ class BarVizScene(Scene):
             ]
             for y in range(len(self.bar_heights))
         ]
+
+    def set_palette(self):
+        self.palette = self.palettes[self.current_palette_index]
+        self.palette_count = len(self.palette)
+
+    def on_d_right(self):
+        self.update_current_palette_index_by(1)
+
+    def on_d_left(self):
+        self.update_current_palette_index_by(-1)
+
+    def update_current_palette_index_by(self, amount: int = 0):
+        self.current_palette_index = (self.current_palette_index + amount) % len(self.palettes)
+        self.set_palette()
+        self.force_render()
