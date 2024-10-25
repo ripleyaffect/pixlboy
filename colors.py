@@ -107,8 +107,7 @@ class Colors:
 
     palettes = [
         usa_palette,
-        venezuala_palette,
-        uva_palette,
+        halloween_palette,
         rgb_palette,
         rainbow_palette,
     ]
@@ -117,5 +116,3 @@ class Colors:
     @classmethod
     def get_random_palette(cls):
         return cls.palettes[random.randint(0, len(cls.palettes) - 1)]
-
-

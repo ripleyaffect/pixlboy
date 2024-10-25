@@ -5,13 +5,15 @@ from .bar_viz_scene import BarVizScene
 from .conway_scene import ConwayScene
 from .emoji_scene import EmojiScene
 from .snake_scene import SnakeScene
+from .flappy_scene import FlappyScene
+from .score_scene import CountScene
 from .scene import Scene
 
 
 class MenuScene(Scene):
     scenes = [
         SnakeScene,
-        BarVizScene,
+        FlappyScene,
         EmojiScene,
         ConwayScene,
     ]

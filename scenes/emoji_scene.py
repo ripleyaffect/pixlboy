@@ -7,7 +7,8 @@ def get_frames(base, count):
     ]
 
 
-BACHELOR_FRAMES = get_frames('bachelor', 60)
+# BACHELOR_FRAMES = get_frames('bachelor', 60)
+PUMPKIN_FRAMES = get_frames('pumpkin', 11)
 SMILE_FRAMES = get_frames('smiley', 20)
 HEART_FRAMES = get_frames('heart', 10)
 BEER_FRAMES = get_frames('beer', 34)
@@ -15,7 +16,7 @@ BEER_FRAMES = get_frames('beer', 34)
 
 class EmojiScene(AnimationScene):
     emoji = [
-        BACHELOR_FRAMES,
+        PUMPKIN_FRAMES,
         HEART_FRAMES,
         SMILE_FRAMES,
         BEER_FRAMES,

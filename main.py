@@ -1,3 +1,4 @@
+import argparse
 import pygame
 
 from displays import EmulatorDisplay, PixelDisplay
@@ -6,7 +7,13 @@ from pixl_boy import PixlBoy
 from utils import ImageUtils
 
 if __name__ == '__main__':
-    use_emulator = False
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-d', '--display')
+
+    args = parser.parse_args()
+    print(args)
+    use_emulator = args.display == 'emulator'
+
     screen_size = (16, 16)
     use_gamepad = not use_emulator
 

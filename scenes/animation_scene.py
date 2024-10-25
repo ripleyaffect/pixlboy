@@ -9,7 +9,8 @@ class AnimationScene(Scene):
             display,
             seconds_between_renders: float = 0.2,
             frame_image_names: list[str] = None,
-            loop: bool = False
+            loop: bool = False,
+            completed_scene=None
     ):
         super(AnimationScene, self).__init__(display, seconds_between_renders)
 
@@ -22,6 +23,7 @@ class AnimationScene(Scene):
         self.frame_count = len(frame_image_names)
 
         self.loop = loop
+        self.completed_scene = completed_scene
 
         self.set_current_frame()
 
@@ -35,8 +37,12 @@ class AnimationScene(Scene):
         if self.current_frame_index == self.frame_count:
             # We always return to menu after a non-looping animation
             if not self.loop:
-                Events.go_to_menu()
+                if self.completed_scene is None:
+                    Events.go_to_menu()
+                else:
+                    self.next_scene = self.completed_scene
                 return
+
             # Loop back to start
             self.current_frame_index = 0
         self.set_current_frame()

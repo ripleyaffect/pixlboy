@@ -3,7 +3,8 @@ import time
 
 from colors import Colors
 from events import Events
-from . import ExplosionScene
+from .explosion_scene import ExplosionScene
+from .score_scene import ScoreScene
 from .scene import Scene
 
 class Snake:
@@ -27,6 +28,8 @@ class SnakeScene(Scene):
 
     def __init__(self, display, seconds_between_renders: float = 0.12):
         super(SnakeScene, self).__init__(display, seconds_between_renders)
+
+        self.score = 0
 
         # Place the head at the center of the screen
         head = (display.width // 2, display.height // 2)
@@ -68,6 +71,7 @@ class SnakeScene(Scene):
         self.snake.move(next_head, got_apple)
 
         if got_apple:
+            self.score += 1
             self.place_apple()
 
         # Lose if head is out of bounds or hit body
@@ -79,7 +83,7 @@ class SnakeScene(Scene):
                 head[1] >= self.display.height or
                 len([val for val in self.snake.nodes[1:] if self.snake.nodes[0] == val]) > 0
         ):
-            self.next_scene = ExplosionScene(self.display)
+            self.next_scene = ExplosionScene(self.display, next_scene=ScoreScene(self.display, self.score))
             return
 
         self.display.set_pixels(self.to_pixels())

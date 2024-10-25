@@ -19,3 +19,5 @@ class Keyboard:
             elif event.key == self.D_KEY: scene.on_d_right()
             elif event.key == self.SPACE_KEY: scene.on_a_down()
             elif event.key == self.ESC_KEY: Events.go_to_menu()
+        elif event.type == pygame.KEYUP:
+            if event.key == self.SPACE_KEY: scene.on_a_up()

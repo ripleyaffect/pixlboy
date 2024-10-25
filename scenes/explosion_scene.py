@@ -15,9 +15,10 @@ class ExplosionScene(AnimationScene):
         'explosion/frame10',
     ]
 
-    def __init__(self, display):
+    def __init__(self, display, next_scene=None):
         super(ExplosionScene, self).__init__(
             display,
             seconds_between_renders=0.1,
             frame_image_names=self.frame_image_names,
+            completed_scene=next_scene,
         )
