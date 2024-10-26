@@ -3,5 +3,4 @@ from .conway_scene import ConwayScene
 from .emoji_scene import EmojiScene
 from .explosion_scene import ExplosionScene
 from .image_scene import ImageScene
-from .menu_scene import MenuScene
 from .snake_scene import SnakeScene
