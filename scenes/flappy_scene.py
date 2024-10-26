@@ -15,8 +15,6 @@ class FlappyScene(Scene):
         self.score = 0
         self.flapping = False
 
-        print('FlappyScene initialized')
-
     def on_a_down(self):
         self.bird_y = min(self.bird_y + 3, 15)
 
@@ -40,12 +38,18 @@ class FlappyScene(Scene):
                 if pipe.collides_with(self.bird_y):
                     self.next_scene = ExplosionScene(self.display, next_scene=ScoreScene(self.display, self.score))
                     return
+                # Spawn next pipe
+                new_pipes.append(Pipe(
+                    self.display.width - 1,
+                    self.get_pipe_gap_y(),
+                    self.get_pipe_gap_height()
+                ))
             new_pipes.append(pipe)
 
         # Add new pipe
         if removed_pipe:
             self.score += 1
-            new_pipes.append(Pipe(self.display.width - 1, random.randint(3, 11), random.randint(1, 5)))
+
 
         self.pipes = new_pipes
 
@@ -72,6 +76,43 @@ class FlappyScene(Scene):
                 pixels[y][pipe.x] = Colors.green
 
         return pixels
+
+    def get_pipe_gap_y(self):
+        min = 6
+        if self.score > 5:
+            min = 5
+        if self.score > 10:
+            min = 4
+        if self.score > 15:
+            min = 3
+
+        max = 10
+        if self.score > 5:
+            max = 11
+        if self.score > 10:
+            max = 12
+        if self.score > 15:
+            max = 13
+
+        return random.randint(min, max)
+
+    def get_pipe_gap_height(self):
+        min = 4
+        if self.score > 5:
+            min = 3
+        if self.score > 10:
+            min = 2
+        if self.score > 15:
+            min = 1
+
+        max = 6
+        if self.score > 5:
+            max = 5
+        if self.score > 10:
+            max = 4
+
+        return random.randint(min, max)
+
 
 class Pipe:
     def __init__(self, x, gap_y, gap_height=3):

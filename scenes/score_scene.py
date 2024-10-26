@@ -10,8 +10,6 @@ class ScoreScene(Scene):
 
         self.score = score
 
-        print('ScoreScene initialized')
-
     def on_a_down(self):
         Events.go_to_menu()
 
@@ -24,12 +22,10 @@ class ScoreScene(Scene):
             for _ in range(self.display.height)
         ]
 
-        # Draw score
-        print(self.score)
         tens = self.score // 10
         ones = self.score % 10
-        print(tens, ones)
 
+        # Draw score
         pixels = self.draw_number(tens, 1, 4, pixels)
         pixels = self.draw_number(ones, 7, 4, pixels)
 

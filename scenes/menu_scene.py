@@ -14,11 +14,13 @@ class MenuScene(Scene):
     scenes = [
         SnakeScene,
         FlappyScene,
+        BarVizScene,
         EmojiScene,
         ConwayScene,
     ]
     scene_image_names = [
         'snake',
+        'flappy',
         'bars',
         'emoji',
         'conway',
@@ -55,9 +57,9 @@ class MenuScene(Scene):
 
         # Render the scene knobs
         scene_count = len(self.scenes)
-        px_bt_knobs = self.display.width // (scene_count - 1)
+        px_bt_knobs = self.display.width // (scene_count - 1) - 1
 
         for (i, scene) in enumerate(self.scenes):
-            pixels[0][i * px_bt_knobs] = Colors.violet if self.active_scene_index == i else Colors.gray
+            pixels[0][1 + i * px_bt_knobs] = Colors.violet if self.active_scene_index == i else Colors.gray
 
         return pixels
